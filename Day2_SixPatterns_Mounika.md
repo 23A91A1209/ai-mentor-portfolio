@@ -1,6 +1,6 @@
 # **Day 2 — Six Pattern Drills**
 
-## **Pattern 1 — PERSONA**
+## **Pattern 1 - PERSONA**
 
 **Prompt:**
 
