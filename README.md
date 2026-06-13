@@ -58,3 +58,23 @@ Public portfolio of 12-day AI Trainer Workshop. By Day 12: 6 daily notebooks + c
 - **Vibe vs engineered:** This is vibe-coded. To productionise, I would add caching, error handling on Gemini failures, rate limiting per user.
 - **What Continue.dev did well:** scaffolded the Streamlit layout fast.
 - **What I had to fix:** Continue.dev forgot to add the 4 sub-score fields to the Gemini prompt itself; I had to add them.
+
+
+## Day 5 Lab 5B — Hugging Face Pulls
+
+### Models tested
+- `facebook/bart-large-mnli` — zero-shot classification
+- `distilbert-base-uncased-finetuned-sst-2-english` — sentiment
+
+### Timing comparison
+
+| | min | avg | Notes |
+|---|-----|-----|-------|
+| HF Inference API | 10.06s | 10.08s | Cold-start: 20s |
+| Local in Colab | 0.74s | 1.58s | Download: 60s on first run |
+
+### When to use each (3-line reflection)
+
+1. **API:** for low-volume, occasional calls. Avoids download. Cold-start risk on first call after idle.
+2. **Local:** for batch processing 100+ items, where you want predictable latency and don't pay per call.
+3. **Production rule of thumb:** if your usage exceeds the API free tier (~30K requests/month at HF), self-host. Otherwise API.
